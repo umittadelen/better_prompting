@@ -5,77 +5,150 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Comprehensive Guide to Writing Tag Prompts for Text-to-Image</title>
         <style>
+            /* Global Styles */
             body {
-                font-family: Arial, sans-serif;
+                font-family: 'Arial', sans-serif;
                 line-height: 1.6;
-                background-color: #f9f9f9;
+                background-color: #181818;
+                color: #f1f1f1;
                 margin: 0;
                 padding: 0;
-                color: #333;
+                display: block;
+                text-align: center; /* Center align title */
             }
+
             header {
-                background-color: #4CAF50;
-                color: white;
-                padding: 1em 0;
+                background-color: #333;
+                color: #FF6347;
+                padding: 1.5em 0;
                 text-align: center;
+                width: 100%;
+                border-bottom: 3px solid #FF6347;
             }
+
             main {
-                max-width: 800px;
+                width: 90%;
+                max-width: 1200px;
                 margin: 2em auto;
-                padding: 1em;
-                background: white;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 2em;
+                background-color: #2a2a2a;
+                border-radius: 12px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                text-align: left; /* Align text inside the main content to the left */
             }
+
+            h1, h2 {
+                color: #FF6347;
+                text-align: center; /* Ensure headings are centered */
+            }
+
             section {
                 margin-bottom: 2em;
             }
-            h2 {
-                color: #4CAF50;
-            }
-            code {
-                background: #e8e8e8;
-                padding: 0.2em 0.4em;
-                border-radius: 4px;
-            }
-            .example {
-                background: #f4f4f4;
-                border-left: 4px solid #4CAF50;
+
+            .example, .tips, .warning {
                 padding: 1em;
                 margin: 1em 0;
+                border-radius: 8px;
             }
-            .tips {
-                background: #fff8e1;
-                border-left: 4px solid #FFC107;
-                padding: 1em;
-                margin: 1em 0;
-            }
+
+            /* Text Highlights */
             .highlight {
                 font-weight: bold;
-                color: #d9534f;
             }
+
+            /* Color Variations for Emphasis */
+            .red {
+                color: #FF4500;
+            }
+
+            .blue {
+                color: #1E90FF;
+            }
+
+            .green {
+                color: #32CD32;
+            }
+
+            .yellow {
+                color: #FFD700;
+            }
+
+            .purple {
+                color: #800080;
+            }
+
+            .nsfw {
+                color: #B22222;
+            }
+
+            .underline {
+                text-decoration: underline;
+            }
+
+            /* Dark Mode Specific */
+            .example {
+                background-color: #333;
+                border-left: 5px solid #32CD32;
+            }
+
+            .tips {
+                background-color: #2b2b2b;
+                border-left: 5px solid #FFD700;
+            }
+
+            .warning {
+                background-color: #3a3a3a;
+                border-left: 5px solid #FF6347;
+                color: #FF4500;
+            }
+
             table {
                 width: 100%;
                 border-collapse: collapse;
                 margin-top: 1em;
             }
+
             th, td {
-                border: 1px solid #ddd;
-                padding: 8px;
+                padding: 12px;
+                border: 1px solid #444;
                 text-align: left;
             }
+
             th {
-                background-color: #f2f2f2;
+                background-color: #444;
+                color: #f1f1f1;
             }
-            .warning {
-                background: #fdecea;
-                border-left: 4px solid #d9534f;
-                padding: 1em;
+
+            tr:nth-child(even) {
+                background-color: #333;
+            }
+
+            /* Links and Code */
+            a {
+                color: #1E90FF;
+                text-decoration: none;
+            }
+
+            code {
+                background: #444;
+                padding: 0.3em 0.5em;
+                border-radius: 4px;
+                color: #f1f1f1;
+            }
+
+            /* Lists and Text */
+            ul, ol {
                 margin: 1em 0;
-                color: #d9534f;
+                padding-left: 2em;
             }
+
+            ol li, ul li {
+                margin-bottom: 1em;
+            }
+
             .warning h2 {
-                color: #d9534f;
+                color: #FF4500;
             }
         </style>
     </head>
@@ -178,31 +251,53 @@
             <section>
                 <h2>Troubleshooting</h2>
                 <ul>
-                    <li><span class="highlight">Conflicting Tags:</span> Avoid contradictory terms like <code>daytime</code> and <code>starry night</code>.</li>
-                    <li><span class="highlight">Overloading:</span> Using too many tags can confuse the model and produce muddled results.</li>
-                    <li><span class="highlight">Ambiguity:</span> Be specific to prevent unintended interpretations.</li>
-                    <li><span class="highlight">Unbalanced Emphasis:</span> Overusing emphasis can distort proportions or details.</li>
+                    <li><span class="highlight red">Conflicting Tags:</span> Avoid contradictory terms like <code>daytime</code> and <code>starry night</code>.</li>
+                    <li><span class="highlight red">Overloading:</span> Using too many tags can confuse the model and produce muddled results.</li>
+                    <li><span class="highlight red">Ambiguity:</span> Be specific to prevent unintended interpretations.</li>
+                    <li><span class="highlight red">Unbalanced Emphasis:</span> Don't emphasize too many features, as it can overwhelm the model.</li>
                 </ul>
             </section>
 
-            <section class="warning">
-                <h2>Important Warning</h2>
-                <p>If your prompt is too short or vague, the model might generate unexpected or inappropriate content, including 18+ imagery. Always use detailed and descriptive tags to guide the model effectively.</p>
-            </section>
-
             <section>
-                <h2>Best Practices</h2>
-                <ol>
-                    <li>Start simple and refine with additional tags.</li>
-                    <li>Use reference images or inspirations for guidance.</li>
-                    <li>Test variations of prompts to understand the model’s interpretation.</li>
-                    <li>Keep experimenting to discover new combinations and effects.</li>
-                </ol>
+                <h2>Helpful Tags</h2>
+                <p><span class="highlight underline yellow">SFW (Can Be Used for NSFW as Well):</span> Tags that help define subjects for all audiences.</p>
+
+                <p><span class="highlight green tag">solo</span> / <span class="highlight green tag">solo focus</span>: Focuses on one subject in the image. Can be used for simplicity and clarity.</p>
+                <p><span class="highlight green tag">intricate details</span>: Adds small, refined details to the image for a more polished result.</p>
+                <p><span class="highlight green tag">4k</span> / <span class="highlight green tag">8k</span> / <span class="highlight green tag">16k</span>: Useful for capturing wide-angle views and improving image quality when characters are farther away.</p>
+                <p><span class="highlight green tag">close-up</span>: Adds more detail to the specific areas you want to highlight (e.g., a close-up of an open mouth). Use with subject-specific tags like <span class="highlight green tag">open mouth</span>.</p>
+
+                <p><span class="highlight green tag">*subject or body part* focus</span>: Focuses on a specific body part while still showing the background (e.g., a shot focusing on a character's head and chest).</p>
+                <p><span class="highlight green tag">small face</span>: Shrinks the face or moves it backward, often resulting in a distant perspective.</p>
+
+                <p><span class="highlight underline yellow">Positions:</span> Tags that describe the subject's pose or positioning. Complex depending on desired effect.</p>
+                <p><span class="highlight green tag">lying on back</span> / <span class="highlight green tag">on stomach</span> / <span class="highlight green tag">on side</span>: Lying positions; use <span class="highlight green tag">upside-down</span> for head-focused shots.</p>
+                <p><span class="highlight green tag">standing</span> / <span class="highlight green tag">walking</span>: Basic standing and walking poses.</p>
+                <p><span class="highlight green tag">running</span>: Use with motion lines for action shots.</p>
+
+                <p><span class="highlight underline yellow">Camera Angles:</span> Crucial for conveying perspectives in your image.</p>
+                <p><span class="highlight green tag">from top</span> / <span class="highlight green tag">below</span> / <span class="highlight green tag">side</span> / <span class="highlight green tag">behind</span>: Basic camera angles.</p>
+                <p><span class="highlight green tag">full body</span>: Captures the subject from head to toe.</p>
+                <p><span class="highlight green tag">low angle view</span>: A shot from below the subject.</p>
+                <p><span class="highlight green tag">overhead view</span>: A top-down perspective.</p>
+                <p><span class="highlight green tag">dutch angle</span>: An angled shot to add dynamism to the image.</p>
+
+                <p><span class="highlight underline yellow">Partially Capturing Subject:</span></p>
+                <p><span class="highlight green tag">upper body</span> / <span class="highlight green tag">lower body</span>: Captures the upper or lower part of the subject.</p>
+                <p><span class="highlight green tag">portrait</span>: A headshot or chest-focused shot.</p>
+
+                <p><span class="highlight underline nsfw">NSFW Tags:</span> Used for generating adult-themed content (use with caution).</p>
+                <p><span class="highlight nsfw tag">mature</span> / <span class="highlight nsfw tag">adult</span>: Indicates mature content.</p>
+                <p><span class="highlight nsfw tag">completely nude</span>: Describes a subject without clothing.</p>
+                <p><span class="highlight nsfw tag">*size* breasts</span>: Describes breast size (e.g., <span class="highlight nsfw tag">small</span>, <span class="highlight nsfw tag">medium</span>, <span class="highlight nsfw tag">large</span>).</p>
+
+                <p><span class="highlight nsfw tag">pussy</span> / <span class="highlight nsfw tag">clitoris</span> / <span class="highlight nsfw tag">anus</span>: Tags for specific body areas, often used in more explicit models.</p>
+                <p><span class="highlight nsfw tag">pov</span>: First-person perspective in the image.</p>
             </section>
 
             <section>
                 <h2>Conclusion</h2>
-                <p>Writing tag prompts is both a science and an art. Mastering this skill takes practice, experimentation, and creativity. By using structured, descriptive, and well-organized tags, you can unlock the full potential of text-to-image generation models. Remember, every prompt is an opportunity to create something unique. Keep exploring, iterating, and refining your prompts to achieve the results you desire. Happy creating!</p>
+                <p>Effective tag prompts can significantly enhance the quality of generated images. With practice, you’ll master the art of prompt crafting to consistently create stunning visuals tailored to your needs. Experiment and iterate as you develop your unique style.</p>
             </section>
         </main>
     </body>
