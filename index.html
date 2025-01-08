@@ -17,6 +17,11 @@
                 padding: 0;
                 display: block;
                 text-align: center; /* Center align title */
+                user-select: none;
+            }
+
+            span, .example, td {
+                user-select: text;
             }
 
             header {
@@ -101,8 +106,7 @@
 
             .warning {
                 background-color: #3a3a3a;
-                border-left: 5px solid #FF6347;
-                color: #FF4500;
+                border-left: 5px solid #ff0000;
             }
 
             table {
@@ -151,7 +155,7 @@
             }
 
             .warning h2 {
-                color: #FF4500;
+                color: #f00;
             }
 
             /* Styled <hr> */
@@ -161,6 +165,25 @@
                 background: #FF6347;
                 margin: 2em 0;
                 border-radius: 5px;
+            }
+
+            summary {
+                font-weight: bold;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+            }
+
+            /* Arrow styling */
+            summary::before {
+                content: "▶";
+                margin-right: 10px;
+                transition: transform 0.3s;
+            }
+
+            details[open] summary::before {
+                content: "▶";
+                transform: rotate(90deg);
             }
         </style>
     </head>
@@ -268,6 +291,8 @@
                 </div>
             </section>
 
+            <hr>
+
             <section class="warning">
                 <h2>Important Warning</h2>
                 <p>If your prompt is too short or vague, the model might generate unexpected or inappropriate content, including 18+ imagery. Always use detailed and descriptive tags to guide the model effectively.</p>
@@ -315,13 +340,15 @@
                 <p><span class="highlight green tag">upper body</span> / <span class="highlight green tag">lower body</span>: Captures the upper or lower part of the subject.</p>
                 <p><span class="highlight green tag">portrait</span>: A headshot or chest-focused shot.</p>
 
-                <h3><span class="highlight underline yellow">NSFW Tags:</span> Used for generating adult-themed content (use with caution).</h3>
-                <p><span class="highlight nsfw tag">mature</span> / <span class="highlight nsfw tag">adult</span>: Indicates mature content.</p>
-                <p><span class="highlight nsfw tag">completely nude</span>: Describes a subject without clothing.</p>
-                <p><span class="highlight nsfw tag">*size* breasts</span>: Describes breast size (e.g., <span class="highlight nsfw tag">small</span>, <span class="highlight nsfw tag">medium</span>, <span class="highlight nsfw tag">large</span>).</p>
+                <details>
+                    <summary><h3><span class="highlight underline yellow">NSFW Tags:</span> Used for generating adult-themed content (use with caution).</h3></summary>
+                    <p><span class="highlight nsfw tag">mature</span> / <span class="highlight nsfw tag">adult</span>: Indicates mature content.</p>
+                    <p><span class="highlight nsfw tag">completely nude</span>: Describes a subject without clothing.</p>
+                    <p><span class="highlight nsfw tag">*size* breasts</span>: Describes breast size (e.g., <span class="highlight nsfw tag">small</span>, <span class="highlight nsfw tag">medium</span>, <span class="highlight nsfw tag">large</span>).</p>
 
-                <p><span class="highlight nsfw tag">pussy</span> / <span class="highlight nsfw tag">clitoris</span> / <span class="highlight nsfw tag">anus</span>: Tags for specific body areas, often used in more explicit models.</p>
-                <p><span class="highlight nsfw tag">pov</span>: First-person perspective in the image.</p>
+                    <p><span class="highlight nsfw tag">pussy</span> / <span class="highlight nsfw tag">clitoris</span> / <span class="highlight nsfw tag">anus</span>: Tags for specific body areas, often used in more explicit models.</p>
+                    <p><span class="highlight nsfw tag">pov</span>: First-person perspective in the image.</p>
+                </details>
             </section>
 
             <hr>
